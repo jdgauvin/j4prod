@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J4Prod - Jeux & Applications de Qualité</title>
+  <meta name="description" content="J4Prod développe des jeux et des applications de qualité. Studio indépendant passionné par la création d'expériences numériques uniques.">
+  <meta property="og:title" content="J4Prod - Jeux & Applications de Qualité">
+  <meta property="og:description" content="Studio indépendant créant des jeux et applications de qualité.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://j4prod.com">
+  <link rel="canonical" href="https://j4prod.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #0ea5e9;
+      --dark: #0f172a;
+      --gray: #64748b;
+      --light: #f8fafc;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      padding: 0.25rem;
+      border-radius: 8px;
+    }
+
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--gray);
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+    }
+
+    .lang-btn.active {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: var(--white);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(14, 165, 233, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.1));
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .contact-email {
+      font-size: 1.25rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-email:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--gray);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .features {
+        padding: 4rem 1.5rem;
+      }
+
+      .contact {
+        padding: 4rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">J4Prod</div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('fr')" id="btn-fr">FR</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge" data-fr="🎮 Studio Indépendant" data-en="🎮 Indie Studio">🎮 Studio Indépendant</span>
+      <h1>
+        <span data-fr="Créons des" data-en="Creating">Créons des</span><br>
+        <span class="gradient-text" data-fr="Expériences Uniques" data-en="Unique Experiences">Expériences Uniques</span>
+      </h1>
+      <p class="hero-description" data-fr="J4Prod développe des jeux et des applications de qualité. Notre passion : transformer des idées créatives en expériences numériques mémorables." data-en="J4Prod develops quality games and applications. Our passion: transforming creative ideas into memorable digital experiences.">
+        J4Prod développe des jeux et des applications de qualité. Notre passion : transformer des idées créatives en expériences numériques mémorables.
+      </p>
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary" data-fr="🚀 Nos Projets" data-en="🚀 Our Projects">🚀 Nos Projets</a>
+        <a href="#contact" class="btn btn-secondary" data-fr="📬 Nous Contacter" data-en="📬 Contact Us">📬 Nous Contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="projects">
+    <h2 class="section-title" data-fr="Ce que nous faisons" data-en="What We Do">Ce que nous faisons</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <h3 data-fr="Jeux Vidéo" data-en="Video Games">Jeux Vidéo</h3>
+        <p data-fr="Des jeux captivants avec des mécaniques innovantes et un gameplay addictif." data-en="Captivating games with innovative mechanics and addictive gameplay.">
+          Des jeux captivants avec des mécaniques innovantes et un gameplay addictif.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3 data-fr="Applications" data-en="Applications">Applications</h3>
+        <p data-fr="Des apps mobiles et web élégantes, performantes et intuitives." data-en="Elegant, performant, and intuitive mobile and web apps.">
+          Des apps mobiles et web élégantes, performantes et intuitives.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3 data-fr="Qualité Premium" data-en="Premium Quality">Qualité Premium</h3>
+        <p data-fr="Chaque projet est conçu avec soin et attention aux détails." data-en="Every project is crafted with care and attention to detail.">
+          Chaque projet est conçu avec soin et attention aux détails.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-content">
+      <h2 data-fr="Restons en contact" data-en="Let's Connect">Restons en contact</h2>
+      <p data-fr="Une idée de projet ? Une question ? N'hésitez pas à nous écrire." data-en="Have a project idea? A question? Don't hesitate to reach out.">
+        Une idée de projet ? Une question ? N'hésitez pas à nous écrire.
+      </p>
+      <a href="mailto:contact@j4prod.com" class="contact-email">contact@j4prod.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 J4Prod. <span data-fr="Tous droits réservés." data-en="All rights reserved.">Tous droits réservés.</span></p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-fr]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      
+      localStorage.setItem('j4prod-lang', lang);
+    }
+
+    // Load saved language preference
+    const savedLang = localStorage.getItem('j4prod-lang');
+    if (savedLang) {
+      setLang(savedLang);
+    }
+  </script>
+</body>
+</html>
